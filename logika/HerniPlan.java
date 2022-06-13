@@ -29,7 +29,7 @@ public class HerniPlan {
      *  Jako výchozí aktuální prostor nastaví domeček.
      */
     private void zalozProstoryHry() {
-        // vytvářejí se jednotlivé prostory
+        // vytvářejí se jednotlivé prostory s popisem
         Prostor cela = new Prostor("cela","ve smutné studené vězeňské cele s malým výhledem na svobodu.");
         Prostor chodby = new Prostor("chodba", "v dlouhé chodbě plné cel, které vedou do ostatních částí vězení.");
         Prostor kuchyně = new Prostor("kuchyně","ve staré vězeňské kuchyni, ještě je tu cítit zápach z obědu.");

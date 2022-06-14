@@ -56,7 +56,36 @@ public class HerniPlan {
         ventilace.setVychod(knihovna);
         knihovna.setVychod(hřiště);
         knihovna.setVychod(ventilace);
-                
+
+        //Přidání předmětů do místností
+        Predmet mříže = new Predmet("mříže", false);
+        Predmet postel = new Predmet("postel", false);
+        cela.pridejPredmet(mříže);
+        cela.pridejPredmet(postel);
+        Predmet mýdlo = new Predmet("mýdlo", true);
+        Predmet ručník = new Predmet("ručník", true);
+        koupelna.pridejPredmet(mýdlo);
+        koupelna.pridejPredmet(ručník);
+        Predmet tác = new Predmet("tác", true);
+        Predmet kelímek = new Predmet("kelímek", true);
+        Predmet stoly= new Predmet("stoly", false);
+        kuchyně.pridejPredmet(tác);
+        kuchyně.pridejPredmet(kelímek);
+        kuchyně.pridejPredmet(stoly);
+        Predmet knížky = new Predmet("knížky", true);
+        Predmet vent = new Predmet("mříž_u_ventilace", false);
+        knihovna.pridejPredmet(knížky);
+        knihovna.pridejPredmet(vent);
+        Predmet pilka = new Predmet("pilka_na_železo", true);
+        Predmet dřevo = new Predmet("dřevo", true);
+        dílna.pridejPredmet(pilka);
+        dílna.pridejPredmet(dřevo);
+        dílna.pridejPredmet(stoly);
+
+        //Přidání předmětů pro postavy
+        Predmet cíga = new Predmet("cíga", true);
+        Predmet pivko = new Predmet("pivko", true);
+
         aktualniProstor = cela;  // hra začíná v domečku
     }
     

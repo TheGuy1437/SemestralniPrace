@@ -1,10 +1,6 @@
 package logika;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -26,6 +22,8 @@ public class Prostor {
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private boolean zamceno = false;
     private boolean viditelnost = true;
+    private List<Postava> seznamPostav;
+    private List<Predmet> seznamPredmetu;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -41,6 +39,8 @@ public class Prostor {
         this.nazev = nazev;
         this.popis = popis;
         vychody = new HashSet<>();
+        seznamPostav = new ArrayList<>();
+        seznamPredmetu= new ArrayList<>();
         if (stav.length == 1){
             this.zamceno = stav[0];
         }
@@ -73,6 +73,9 @@ public class Prostor {
 
     /**
      * Metoda pro nastavení stavu zamčení místnosti
+     *
+     * @param zamceno udává stav zamčení místnosti
+     *
      */
     public void setZamceno(boolean zamceno) {
         this.zamceno = zamceno;
@@ -87,9 +90,32 @@ public class Prostor {
 
     /**
      * Metoda pro nastavení stavu viditelnosti místnosti
+     *
+     * @param viditelnost udává stav zamčení místnosti
+     *
      */
     public void setViditelnost(boolean viditelnost) {
         this.viditelnost = viditelnost;
+    }
+
+    /**
+     * Metoda pro přidání předmětu do místnosti
+     *
+     * @param predmet udává předmět k přidání
+     *
+     */
+    public void pridejPredmet(Predmet predmet) {
+        this.seznamPredmetu.add(predmet);
+    }
+
+    /**
+     * Metoda pro odebrání předmětu do místnosti
+     *
+     * @param predmet udává předmět k odebrání
+     *
+     */
+    public void odeberPredmet(Predmet predmet){
+        this.seznamPredmetu.remove(predmet);
     }
 
     /**
@@ -166,7 +192,7 @@ public class Prostor {
      *
      * @return Popis východů - názvů sousedních prostorů
      */
-    private String popisVychodu() {
+    public String popisVychodu() {
         String vracenyText = "východy:";
         for (Prostor sousedni : vychody) {
             if (sousedni.viditelnost == false) {
@@ -179,8 +205,22 @@ public class Prostor {
                     vracenyText += " " + sousedni.getNazev();
                 }
             }
+        }
+        return vracenyText;
+    }
 
+    public String popisVeci() {
+        String vracenyText = "předměty v prostoru:";
+        for (Predmet predmet : seznamPredmetu){
+            vracenyText += " " + predmet.getNazev();
+        }
+        return vracenyText;
+    }
 
+    public String popisPostav() {
+        String vracenyText = "postavy v prostoru:";
+        for (Postava postava : seznamPostav){
+            vracenyText += " " + postava.getJmenoPostavy();
         }
         return vracenyText;
     }

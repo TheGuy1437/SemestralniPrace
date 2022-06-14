@@ -86,6 +86,9 @@ public class HerniPlan {
         Predmet cíga = new Predmet("cíga", true);
         Predmet pivko = new Predmet("pivko", true);
 
+        //Založení inventáře
+        Inventar inventar = new Inventar("inventář");
+
         aktualniProstor = cela;  // hra začíná v domečku
     }
     

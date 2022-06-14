@@ -31,12 +31,12 @@ public class HerniPlan {
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory s popisem
         Prostor cela = new Prostor("cela","ve smutné studené vězeňské cele s malým výhledem na svobodu.");
-        Prostor chodby = new Prostor("chodba", "v dlouhé chodbě plné cel, které vedou do ostatních částí vězení.");
+        Prostor chodby = new Prostor("chodby", "v dlouhé chodbě plné cel, které vedou do ostatních částí vězení.");
         Prostor kuchyně = new Prostor("kuchyně","ve staré vězeňské kuchyni, ještě je tu cítit zápach z obědu.");
-        Prostor dílna = new Prostor("posilovna","v zamčené dílně, zbylo tu po stěhování nějaké nářadí.");
-        Prostor koupelna = new Prostor("posilovna","ve staré koupelně, jsou tu sprchy a mýdlo.");
+        Prostor dílna = new Prostor("dílna","v zamčené dílně, zbylo tu po stěhování nějaké nářadí.", true);
+        Prostor koupelna = new Prostor("koupelna","ve staré koupelně, jsou tu sprchy a mýdlo.");
         Prostor hřiště = new Prostor("hřiště","na vyprahlém hřišti, kde vězni tráví volný čas.");
-        Prostor ventilace = new Prostor("ventilace","v úzké, zaprášené větrací šachtě.");
+        Prostor ventilace = new Prostor("ventilace","v úzké, zaprášené větrací šachtě.", true, false);
         Prostor knihovna = new Prostor("knihovna","v nehlídané knihovně na druhém konci budovy.");
         
         // přiřazují se průchody mezi prostory (sousedící prostory)

@@ -41,10 +41,13 @@ class PrikazJdi implements IPrikaz {
         // zkoušíme přejít do sousedního prostoru
         Prostor sousedniProstor = plan.getAktualniProstor().vratSousedniProstor(smer);
 
-        if (sousedniProstor == null) {
+        if (sousedniProstor == null || sousedniProstor.jeViditelnost() == false) {
             return "Tam se odsud jít nedá!";
         }
         else {
+            if (sousedniProstor.jeZamceno() == true) {
+                return "Tam se teď nedostanu!";
+            }
             plan.setAktualniProstor(sousedniProstor);
             return sousedniProstor.dlouhyPopis();
         }

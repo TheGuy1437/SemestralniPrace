@@ -24,19 +24,30 @@ public class Prostor {
     private String nazev;
     private String popis;
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
+    private boolean zamceno = false;
+    private boolean viditelnost = true;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
      * před domem"
+     * Druhá metoda je použita kvůli overloadingu a zjednodušení zadávání konstruktoru.
      *
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
+     * @param stav Stav přístupu a viditelnosti do místnosti.
      */
-    public Prostor(String nazev, String popis) {
+    public Prostor(String nazev, String popis, Boolean... stav) {
         this.nazev = nazev;
         this.popis = popis;
         vychody = new HashSet<>();
+        if (stav.length == 1){
+            this.zamceno = stav[0];
+        }
+        if (stav.length == 2) {
+            this.zamceno = stav[0];
+            this.viditelnost = stav[1];
+        }
     }
 
     /**
@@ -51,6 +62,34 @@ public class Prostor {
      */
     public void setVychod(Prostor vedlejsi) {
         vychody.add(vedlejsi);
+    }
+
+    /**
+     * Metoda pro zjištění stavu zamčení místnosti
+     */
+    public boolean jeZamceno() {
+        return zamceno;
+    }
+
+    /**
+     * Metoda pro nastavení stavu zamčení místnosti
+     */
+    public void setZamceno(boolean zamceno) {
+        this.zamceno = zamceno;
+    }
+
+    /**
+     * Metoda pro zjištění stavu viditelnosti místnosti
+     */
+    public boolean jeViditelnost() {
+        return viditelnost;
+    }
+
+    /**
+     * Metoda pro nastavení stavu viditelnosti místnosti
+     */
+    public void setViditelnost(boolean viditelnost) {
+        this.viditelnost = viditelnost;
     }
 
     /**
@@ -130,7 +169,18 @@ public class Prostor {
     private String popisVychodu() {
         String vracenyText = "východy:";
         for (Prostor sousedni : vychody) {
-            vracenyText += " " + sousedni.getNazev();
+            if (sousedni.viditelnost == false) {
+                continue;
+            } else {
+                if (sousedni.zamceno == true) {
+                    vracenyText += " " + sousedni.getNazev() + "(nelze vstoupit)";
+                }
+                else {
+                    vracenyText += " " + sousedni.getNazev();
+                }
+            }
+
+
         }
         return vracenyText;
     }

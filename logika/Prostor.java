@@ -119,6 +119,18 @@ public class Prostor {
     }
 
     /**
+     * Metoda pro zjištění zda prostor obsahuje daný předmět
+     *
+     * @param predmet udává předmět ke zjištění
+     *
+     */
+    public boolean obsahujePredmet(Predmet predmet) {
+        if (this.seznamPredmetu.contains(predmet)) {
+            return true;
+        }
+        return false;
+    }
+    /**
      * Metoda equals pro porovnání dvou prostorů. Překrývá se metoda equals ze
      * třídy Object. Dva prostory jsou shodné, pokud mají stejný název. Tato
      * metoda je důležitá z hlediska správného fungování seznamu východů (Set).
@@ -245,6 +257,15 @@ public class Prostor {
         else {
             return hledaneProstory.get(0);
         }
+    }
+
+    /**
+     * Metoda vrací seznam předmětů v místnosti
+     *
+     * @return seznam předmětů
+     */
+    public List<Predmet> getSeznamPredmetu() {
+        return seznamPredmetu;
     }
 
     /**

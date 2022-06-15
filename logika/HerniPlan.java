@@ -15,20 +15,22 @@ package logika;
 public class HerniPlan {
     
     private Prostor aktualniProstor;
+    private Inventar inventar = new Inventar("inventář");
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví halu.
      */
     public HerniPlan() {
-        zalozProstoryHry();
 
+        zalozProstoryHry();
     }
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví domeček.
      */
     private void zalozProstoryHry() {
+
         // vytvářejí se jednotlivé prostory s popisem
         Prostor cela = new Prostor("cela","ve smutné studené vězeňské cele s malým výhledem na svobodu.");
         Prostor chodby = new Prostor("chodby", "v dlouhé chodbě plné cel, které vedou do ostatních částí vězení.");
@@ -87,9 +89,9 @@ public class HerniPlan {
         Predmet pivko = new Predmet("pivko", true);
 
         //Založení inventáře
-        Inventar inventar = new Inventar("inventář");
+      //  inventar.pridejPredmet(dřevo);
 
-        aktualniProstor = cela;  // hra začíná v domečku
+        aktualniProstor = cela;  // hra začíná v cele
     }
     
     /**
@@ -111,4 +113,21 @@ public class HerniPlan {
        aktualniProstor = prostor;
     }
 
+    /**
+     *  Metoda vrací objekt invenáře.
+     *
+     * @return      aktualní inventář
+     */
+    public Inventar getInventar() {
+        return inventar;
+    }
+
+    /**
+     * Metoda nastavuje a mění inventář
+     *
+     * @param inventar inventář hráče
+     */
+    public void setInventar(Inventar inventar) {
+        this.inventar = inventar;
+    }
 }

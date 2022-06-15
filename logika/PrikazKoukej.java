@@ -17,7 +17,7 @@ public class PrikazKoukej implements IPrikaz {
     /**
      * Konstruktor k příkazu koukej
      *
-     * @param plan
+     * @param plan vkládá herní plán
      */
     public PrikazKoukej(HerniPlan plan) {
         this.plan = plan;

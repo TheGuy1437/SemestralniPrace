@@ -73,4 +73,12 @@ public class Inventar {
         return vracenyText;
     }
 
+    /**
+     * Metoda vrací seznam předmětů.
+     *
+     * @return list předmětů v inventáři
+     */
+    public List<Predmet> getObsah() {
+        return obsah;
+    }
 }

@@ -16,6 +16,7 @@ public class Hra implements IHra {
     private SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
     private HerniPlan herniPlan;
     private boolean konecHry = false;
+    private boolean vitezstvi = false;
 
     /**
      *  Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
@@ -24,7 +25,7 @@ public class Hra implements IHra {
         herniPlan = new HerniPlan();
         platnePrikazy = new SeznamPrikazu();
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy));
-        platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan, this));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
         platnePrikazy.vlozPrikaz(new PrikazKoukej(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazInventar(herniPlan));
@@ -48,7 +49,7 @@ public class Hra implements IHra {
      *  Vrátí závěrečnou zprávu pro hráče.
      */
     public String vratEpilog() {
-        return "";
+        return "Podařilo se ti oknem dostat pryč z vězení! Gratuluji!!!";
     }
     
     /** 
@@ -56,6 +57,24 @@ public class Hra implements IHra {
      */
      public boolean konecHry() {
         return konecHry;
+    }
+
+    /**
+     * Nastavuje a rozhoduje jestli dal hráč konec nebo vyhrál hru
+     *
+     * @param vitezstvi stav výhry
+     */
+    public void setVitezstvi(boolean vitezstvi) {
+        this.vitezstvi = vitezstvi;
+    }
+
+    /**
+     * Zjistuje zda hru hráč vyhrál
+     *
+     * @return stav vítězství
+     */
+    public boolean isVitezstvi() {
+        return vitezstvi;
     }
 
     /**

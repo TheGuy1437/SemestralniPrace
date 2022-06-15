@@ -36,6 +36,10 @@ public interface IHra
      * @return   vrací true, pokud hra skončila
      */
      public boolean konecHry();
+
+     public boolean isVitezstvi();
+
+    public void setVitezstvi(boolean vitezstvi);
      
       /**
      *  Metoda zpracuje řetězec uvedený jako parametr, rozdělí ho na slovo příkazu a další parametry.

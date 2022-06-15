@@ -1,14 +1,14 @@
 package logika;
 
 /**
- *  Třída Snejs vytváří jednoduchou postavu, která chce předmět.
+ *  Třída Bruno vytváří jednoduchou postavu, která chce předmět.
  *  Tato třída je součástí jednoduché textové hry.
  *
  *@author     Adam Houška
  *@version    pro školní rok 2021/2022
  *
  */
-public class Snejks extends Postava {
+public class Bruno extends Postava {
 
     /**
      * Konstruktor třídy
@@ -20,7 +20,7 @@ public class Snejks extends Postava {
      * @param predmetCoDa předmět který hráč dostane
      * @param dostalVec stav splnění výměny
      */
-    public Snejks(String jmenoPostavy, Predmet predmetCoChce, String hlaskaPredVeci, String hlaskaPoVeci, Predmet predmetCoDa, boolean dostalVec) {
+    public Bruno(String jmenoPostavy, Predmet predmetCoChce, String hlaskaPredVeci, String hlaskaPoVeci, Predmet predmetCoDa, boolean dostalVec) {
         super(jmenoPostavy, predmetCoChce, hlaskaPredVeci, hlaskaPoVeci, predmetCoDa, dostalVec);
     }
 

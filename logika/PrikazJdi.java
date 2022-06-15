@@ -10,14 +10,17 @@ package logika;
 class PrikazJdi implements IPrikaz {
     private static final String NAZEV = "jdi";
     private HerniPlan plan;
+    private boolean unlockedVent = false;
+    private Hra hra;
     
     /**
     *  Konstruktor třídy
     *  
     *  @param plan herní plán, ve kterém se bude ve hře "chodit" 
     */    
-    public PrikazJdi(HerniPlan plan) {
+    public PrikazJdi(HerniPlan plan, Hra hra) {
         this.plan = plan;
+        this.hra = hra;
     }
 
     /**
@@ -48,7 +51,27 @@ class PrikazJdi implements IPrikaz {
             if (sousedniProstor.jeZamceno() == true) {
                 return "Tam se teď nedostanu!";
             }
+            Prostor kontrola = plan.getAktualniProstor();
+            Inventar inventar = plan.getInventar();
+            // výměna předmětů
+            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("cela") && kontrola.containsPredmetPodleJmena("cíga")) {
+                kontrola.removePredmetPodleJmena("cíga");
+                kontrola.pridejPredmet(new Predmet("pivko", true));
+                System.out.println("Někdo se rychle mihl do a z tvé cely když si odcházel!");
+            }
             plan.setAktualniProstor(sousedniProstor);
+            // odemknutí ventilace a dílny
+            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("knihovna") && inventar.getPredmetPodleJmena("šroubovák") && !unlockedVent) {
+                plan.getProstorPodleJmena("ventilace").setZamceno(false);
+                plan.getProstorPodleJmena("dílna").setZamceno(false);
+                plan.getProstorPodleJmena("ventilace").setViditelnost(true);
+                unlockedVent = true;
+                return sousedniProstor.dlouhyPopis() + "\nPodařilo se ti otevřít průchod do ventilace.";
+            }
+            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("cela") && inventar.getPredmetPodleJmena("pilka_na_železo")) {
+                hra.setKonecHry(true);
+                return "";
+            }
             return sousedniProstor.dlouhyPopis();
         }
     }

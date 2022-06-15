@@ -130,6 +130,25 @@ public class Prostor {
         }
         return false;
     }
+
+    public Boolean containsPredmetPodleJmena(String jmeno) {
+        for (Predmet predmet : seznamPredmetu ) {
+            if (predmet.getNazev().equals(jmeno)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removePredmetPodleJmena(String jmeno) {
+        for (Predmet predmet : seznamPredmetu ) {
+            if (predmet.getNazev().equals(jmeno)) {
+                odeberPredmet(predmet);
+                return;
+            }
+        }
+    }
+
     /**
      * Metoda equals pro porovnání dvou prostorů. Překrývá se metoda equals ze
      * třídy Object. Dva prostory jsou shodné, pokud mají stejný název. Tato

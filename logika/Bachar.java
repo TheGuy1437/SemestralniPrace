@@ -8,7 +8,7 @@ package logika;
  *@version    pro školní rok 2021/2022
  *
  */
-public class Snejks extends Postava {
+public class Bachar extends Postava {
 
     /**
      * Konstruktor třídy
@@ -20,7 +20,7 @@ public class Snejks extends Postava {
      * @param predmetCoDa předmět který hráč dostane
      * @param dostalVec stav splnění výměny
      */
-    public Snejks(String jmenoPostavy, Predmet predmetCoChce, String hlaskaPredVeci, String hlaskaPoVeci, Predmet predmetCoDa, boolean dostalVec) {
+    public Bachar(String jmenoPostavy, Predmet predmetCoChce, String hlaskaPredVeci, String hlaskaPoVeci, Predmet predmetCoDa, boolean dostalVec) {
         super(jmenoPostavy, predmetCoChce, hlaskaPredVeci, hlaskaPoVeci, predmetCoDa, dostalVec);
     }
 

@@ -57,6 +57,16 @@ public class Inventar {
         System.out.println("");
         return;
     }
+
+    public boolean getPredmetPodleJmena(String jmeno) {
+        for (Predmet predmet : obsah ) {
+            if (predmet.getNazev().equals(jmeno)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * Metoda vrací všechny předměty v inventáři, pokud u sebe nic hráč nemá, napíše to.
      *

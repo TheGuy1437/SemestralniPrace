@@ -22,7 +22,7 @@ public class Prostor {
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private boolean zamceno = false;
     private boolean viditelnost = true;
-    private List<Postava> seznamPostav;
+    private Postava postavaVMistnosti;
     private List<Predmet> seznamPredmetu;
 
     /**
@@ -35,11 +35,11 @@ public class Prostor {
      * @param popis Popis prostoru.
      * @param stav Stav přístupu a viditelnosti do místnosti.
      */
-    public Prostor(String nazev, String popis, Boolean... stav) {
+    public Prostor(String nazev, String popis, Postava postava, Boolean... stav) {
         this.nazev = nazev;
         this.popis = popis;
+        this.postavaVMistnosti = postava;
         vychody = new HashSet<>();
-        seznamPostav = new ArrayList<>();
         seznamPredmetu= new ArrayList<>();
         if (stav.length == 1){
             this.zamceno = stav[0];
@@ -161,6 +161,15 @@ public class Prostor {
     }
 
     /**
+     * Metoda slouží k vrácení postavy v místnosti
+     *
+     * @return
+     */
+    public Postava getPostavaVMistnosti() {
+        return postavaVMistnosti;
+    }
+
+    /**
      * metoda hashCode vraci ciselny identifikator instance, ktery se pouziva
      * pro optimalizaci ukladani v dynamickych datovych strukturach. Pri
      * prekryti metody equals je potreba prekryt i metodu hashCode. Podrobny
@@ -174,7 +183,6 @@ public class Prostor {
         vysledek = 37 * vysledek + hashNazvu;
         return vysledek;
     }
-      
 
     /**
      * Vrací název prostoru (byl zadán při vytváření prostoru jako parametr
@@ -231,8 +239,8 @@ public class Prostor {
 
     public String popisPostav() {
         String vracenyText = "postavy v prostoru:";
-        for (Postava postava : seznamPostav){
-            vracenyText += " " + postava.getJmenoPostavy();
+        if (postavaVMistnosti != null) {
+            vracenyText += " " + postavaVMistnosti.getJmenoPostavy();
         }
         return vracenyText;
     }

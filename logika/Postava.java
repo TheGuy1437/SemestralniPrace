@@ -8,7 +8,7 @@ package logika;
  *@version    pro školní rok 2021/2022
  *
  */
-public class Postava {
+public abstract class Postava {
 
     private String jmenoPostavy;
     private Predmet predmetCoChce;
@@ -17,21 +17,13 @@ public class Postava {
     private Predmet predmetCoDa;
     private boolean dostalVec;
 
-    /**
-     * Konstruktor pro postavy třídy Postava
-     *
-     * @param jmenoPostavy jméno dané postavy
-     * @param predmetCoChce předmět který za něco vymění
-     * @param hlaskaPredVeci hláška kterou řekne před tím než mu dáme věc
-     * @param hlaskaPoVeci hláška kterou řekne po tom co mu dáme věc
-     * @param predmetCoDa předmět který nám dá za ten co chce
-     */
-    public Postava(String jmenoPostavy, Predmet predmetCoChce, String hlaskaPredVeci, String hlaskaPoVeci, Predmet predmetCoDa) {
+    public Postava(String jmenoPostavy, Predmet predmetCoChce, String hlaskaPredVeci, String hlaskaPoVeci, Predmet predmetCoDa, boolean dostalVec) {
         this.jmenoPostavy = jmenoPostavy;
         this.predmetCoChce = predmetCoChce;
         this.hlaskaPredVeci = hlaskaPredVeci;
         this.hlaskaPoVeci = hlaskaPoVeci;
         this.predmetCoDa = predmetCoDa;
+        this.dostalVec = dostalVec;
     }
 
     /**
@@ -41,6 +33,33 @@ public class Postava {
      */
     public String getJmenoPostavy() {
         return jmenoPostavy;
+    }
+
+    /**
+     * Metoda pro zjištění hlášky, která zazní před předáním předmětu.
+     *
+     * @return hláška
+     */
+    public String getHlaskaPredVeci() {
+        return hlaskaPredVeci;
+    }
+
+    /**
+     * Metoda pro zjištění hlášky, která zazní po předání předmětu
+     *
+     * @return hláška
+     */
+    public String getHlaskaPoVeci() {
+        return hlaskaPoVeci;
+    }
+
+    /**
+     * Metoda pro zjištění stavu splnění úkolu.
+     *
+     * @return
+     */
+    public boolean isDostalVec() {
+        return dostalVec;
     }
 
     /**
@@ -68,5 +87,23 @@ public class Postava {
         this.predmetCoChce = predmetCoChce;
     }
 
+    /**
+     * Metoda na vrácení předmětu, který hráč získá za splnění úkolu.
+     *
+     * @return předmět
+     */
+    public Predmet getPredmetCoDa() {
+        return predmetCoDa;
+    }
+
+    /**
+     * Abstraktní metoda pro mluvení postav.
+     */
+    public abstract void rekniHlaskuPred();
+
+    /**
+     * Abstraktní metoda pro mluvení postav.
+     */
+    public abstract void rekniHlaskuPoVeci();
 
 }

@@ -35,15 +35,37 @@ public class HerniPlan {
      */
     private void zalozProstoryHry() {
 
+        //Přidání předmětů do místností
+        Predmet mříže = new Predmet("mříže", false);
+        Predmet postel = new Predmet("postel", false);
+        Predmet mýdlo = new Predmet("mýdlo", true);
+        Predmet ručník = new Predmet("ručník", true);
+        Predmet hřeben = new Predmet("hřeben", true);
+        Predmet tác = new Predmet("tác", true);
+        Predmet kelímek = new Predmet("kelímek", true);
+        Predmet stoly= new Predmet("stoly", false);
+        Predmet knížky = new Predmet("knížky", true);
+        Predmet vent = new Predmet("mříž_u_ventilace", false);
+        Predmet pilka = new Predmet("pilka_na_železo", true);
+        Predmet dřevo = new Predmet("dřevo", true);
+        Predmet cíga = new Predmet("cíga", true);
+        Predmet klíč_od_knihovny = new Predmet("klíč_od_knihovny", true);
+        Predmet pivko = new Predmet("pivko", true);
+
+        //Vytvoření postav
+        Snejks snejks = new Snejks("Snejks", mýdlo, "More to jsem já co vypustil baziliška! Já jsem Hagrid a můžete mě s***.\nNemáš nějaký mejdlo pro mě?", "*udělá ze sebe pakárnu*\nTady máš, dík more!", hřeben, false);
+        //Bachar bachar = new Bachar
+        //Kuchar kuchar = new Kuchar
+
         // vytvářejí se jednotlivé prostory s popisem
-        Prostor cela = new Prostor("cela","ve smutné studené vězeňské cele s malým výhledem na svobodu.");
-        Prostor chodby = new Prostor("chodby", "v dlouhé chodbě plné cel, které vedou do ostatních částí vězení.");
-        Prostor kuchyně = new Prostor("kuchyně","ve staré vězeňské kuchyni, ještě je tu cítit zápach z obědu.");
-        Prostor dílna = new Prostor("dílna","v zamčené dílně, zbylo tu po stěhování nějaké nářadí.", true);
-        Prostor koupelna = new Prostor("koupelna","ve staré koupelně, jsou tu sprchy a mýdlo.");
-        Prostor hřiště = new Prostor("hřiště","na vyprahlém hřišti, kde vězni tráví volný čas.");
-        Prostor ventilace = new Prostor("ventilace","v úzké, zaprášené větrací šachtě.", true, false);
-        Prostor knihovna = new Prostor("knihovna","v nehlídané knihovně na druhém konci budovy.", true);
+        Prostor cela = new Prostor("cela","ve smutné studené vězeňské cele s malým výhledem na svobodu.", null);
+        Prostor chodby = new Prostor("chodby", "v dlouhé chodbě plné cel, které vedou do ostatních částí vězení.", snejks);
+        Prostor kuchyně = new Prostor("kuchyně","ve staré vězeňské kuchyni, ještě je tu cítit zápach z obědu.", null);
+        Prostor dílna = new Prostor("dílna","v zamčené dílně, zbylo tu po stěhování nějaké nářadí.",null, true);
+        Prostor koupelna = new Prostor("koupelna","ve staré koupelně, jsou tu sprchy a mýdlo.", null);
+        Prostor hřiště = new Prostor("hřiště","na vyprahlém hřišti, kde vězni tráví volný čas.", null);
+        Prostor ventilace = new Prostor("ventilace","v úzké, zaprášené větrací šachtě.",null, true, false);
+        Prostor knihovna = new Prostor("knihovna","v nehlídané knihovně na druhém konci budovy.",null, true);
 
         // zasazení prostorů do seznamu
         seznamProstoru.add(cela);
@@ -73,40 +95,19 @@ public class HerniPlan {
         knihovna.setVychod(hřiště);
         knihovna.setVychod(ventilace);
 
-        //Přidání předmětů do místností
-        Predmet mříže = new Predmet("mříže", false);
-        Predmet postel = new Predmet("postel", false);
+        //Přiřazení předmětů do prostorů
         cela.pridejPredmet(mříže);
         cela.pridejPredmet(postel);
-        Predmet mýdlo = new Predmet("mýdlo", true);
-        Predmet ručník = new Predmet("ručník", true);
         koupelna.pridejPredmet(mýdlo);
         koupelna.pridejPredmet(ručník);
-        Predmet tác = new Predmet("tác", true);
-        Predmet kelímek = new Predmet("kelímek", true);
-        Predmet stoly= new Predmet("stoly", false);
         kuchyně.pridejPredmet(tác);
         kuchyně.pridejPredmet(kelímek);
         kuchyně.pridejPredmet(stoly);
-        Predmet knížky = new Predmet("knížky", true);
-        Predmet vent = new Predmet("mříž_u_ventilace", false);
         knihovna.pridejPredmet(knížky);
         knihovna.pridejPredmet(vent);
-        Predmet pilka = new Predmet("pilka_na_železo", true);
-        Predmet dřevo = new Predmet("dřevo", true);
         dílna.pridejPredmet(pilka);
         dílna.pridejPredmet(dřevo);
         dílna.pridejPredmet(stoly);
-
-
-        //Přidání předmětů pro postavy
-        Predmet cíga = new Predmet("cíga", true);
-        Predmet klíč_od_knihovny = new Predmet("klíč_od_knihovny", true);
-        Predmet pivko = new Predmet("pivko", true);
-
-        chodby.pridejPredmet(klíč_od_knihovny);
-
-        //Založení inventáře
 
         aktualniProstor = cela;  // hra začíná v cele
     }

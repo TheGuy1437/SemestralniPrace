@@ -1,7 +1,7 @@
 package logika;
 
 /**
- *  Třída PrikazKoukej implementuje pro hru příkaz koukej, pomocí které se dá zjistit, co a kdo je v prostoru, kde se hrdina nachází.
+ *  Třída PrikazKoukej implementuje pro hru příkaz koukej, pomocí kterého se dá zjistit, co a kdo je v prostoru, kde se hrdina nachází.
  *  Tato třída je součástí jednoduché textové hry.
  *
  *@author     Adam Houška

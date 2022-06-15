@@ -1,6 +1,9 @@
 package logika;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -15,7 +18,8 @@ package logika;
 public class HerniPlan {
     
     private Prostor aktualniProstor;
-    private Inventar inventar = new Inventar("inventář");
+    private List<Prostor> seznamProstoru = new ArrayList<>();
+    private Inventar inventar = new Inventar("inventář", this);
     
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -39,7 +43,17 @@ public class HerniPlan {
         Prostor koupelna = new Prostor("koupelna","ve staré koupelně, jsou tu sprchy a mýdlo.");
         Prostor hřiště = new Prostor("hřiště","na vyprahlém hřišti, kde vězni tráví volný čas.");
         Prostor ventilace = new Prostor("ventilace","v úzké, zaprášené větrací šachtě.", true, false);
-        Prostor knihovna = new Prostor("knihovna","v nehlídané knihovně na druhém konci budovy.");
+        Prostor knihovna = new Prostor("knihovna","v nehlídané knihovně na druhém konci budovy.", true);
+
+        // zasazení prostorů do seznamu
+        seznamProstoru.add(cela);
+        seznamProstoru.add(chodby);
+        seznamProstoru.add(kuchyně);
+        seznamProstoru.add(dílna);
+        seznamProstoru.add(koupelna);
+        seznamProstoru.add(hřiště);
+        seznamProstoru.add(ventilace);
+        seznamProstoru.add(knihovna);
         
         // přiřazují se průchody mezi prostory (sousedící prostory)
         cela.setVychod(chodby);
@@ -84,12 +98,15 @@ public class HerniPlan {
         dílna.pridejPredmet(dřevo);
         dílna.pridejPredmet(stoly);
 
+
         //Přidání předmětů pro postavy
         Predmet cíga = new Predmet("cíga", true);
+        Predmet klíč_od_knihovny = new Predmet("klíč_od_knihovny", true);
         Predmet pivko = new Predmet("pivko", true);
 
+        chodby.pridejPredmet(klíč_od_knihovny);
+
         //Založení inventáře
-      //  inventar.pridejPredmet(dřevo);
 
         aktualniProstor = cela;  // hra začíná v cele
     }
@@ -120,6 +137,16 @@ public class HerniPlan {
      */
     public Inventar getInventar() {
         return inventar;
+    }
+
+
+    public Prostor getProstorPodleJmena(String jmeno) {
+        for (Prostor prostor : seznamProstoru ) {
+            if (prostor.getNazev().equals(jmeno)) {
+                return prostor;
+            }
+        }
+        return null;
     }
 
     /**

@@ -3,6 +3,14 @@ package logika;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  Třída Inventář slouží k vytvoření a manipulaci s inventářem hráče.
+ *  Tato třída je součástí jednoduché textové hry.
+ *
+ *@author     Adam Houška
+ *@version    pro školní rok 2021/2022
+ *
+ */
 public class Inventar {
 
     private String nazev;
@@ -15,8 +23,9 @@ public class Inventar {
      *
      * @param nazev
      */
-    public Inventar(String nazev) {
+    public Inventar(String nazev, HerniPlan herniPlan) {
         this.nazev = nazev;
+        this.plan = herniPlan;
     }
 
     /**
@@ -24,15 +33,23 @@ public class Inventar {
      *
      * @param predmet udává jaký předmět do inventáře vkládáme
      */
-    public void pridejPredmet(Predmet predmet) {
+    public void pridejPredmet(Predmet predmet ) {
         if (obsah.size() == POCET_MIST_V_INVETARI){
             System.out.println("Tolik věcí neunesu, musím něco odhodit.\n");
             return;
+        }
+        if (predmet.getNazev().equals("klíč_od_knihovny")) {
+            plan.getProstorPodleJmena("knihovna").setZamceno(false);
         }
         obsah.add(predmet);
         return;
     }
 
+    /**
+     * Metoda slouží k odebrání předmětu z inventáře.
+     *
+     * @param predmet předmět k odebrání
+     */
     public void odeberPredmet(Predmet predmet) {
         if (obsah.contains(predmet)) {
             obsah.remove(predmet);

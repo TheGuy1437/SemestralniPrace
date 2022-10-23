@@ -36,6 +36,7 @@ public class PrikazKoukej implements IPrikaz {
         }
         System.out.println(prostor.popisVeci());
         System.out.print(prostor.popisPostav());
+        System.out.print(prostor.popisVychodu());
         return "";
     }
 

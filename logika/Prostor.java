@@ -221,7 +221,7 @@ public class Prostor {
      * @return Dlouhý popis prostoru
      */
     public String dlouhyPopis() {
-        return "Nacházíš se " + popis + ".\n"
+        return "Nacházíš se " + popis + "\n"
                 + popisVychodu();
     }
 

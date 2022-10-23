@@ -56,12 +56,12 @@ public class HerniPlan {
         //Vytvoření postav
         Snejks snejks = new Snejks("Snejks", mýdlo, "More to jsem já co vypustil baziliška! Já jsem Hagrid a můžete mě s***.\nNemáš nějaký mejdlo pro mě?", "*udělá ze sebe pakárnu*\nTady máš, dík more!", hřeben, false);
         Bachar bachar = new Bachar("Bachař", pivko, "Tak koho jsi napadl dneska co?\nDo knihovny je vstup zavřenej, stejně by tam někdo jako ty nevěděl co dělat!", "No dobře, tady máš náhradní klíč, ale tohle je výjímka!\nA jestli tě napadne to někomu prásknout jdeš rovnou do díry!!!", klíč_od_knihovny, false);
-        Kuchar kuchar = new Kuchar("Kuchař", hřeben, "Ztratil jsem svůj oblíbenej hřeben, asi mi ho někdo šlohnul!\nNeviděl si ho někde?\nPrý je v knihovně tajná chodba kterou se dá dostat do dílny, ale tam se stejně nedostaneš.", "Super!!! Netušil jsem že ho najdeš, něco pro tebe mám.\nSnad ho neukradl ten Snejks pitomej\nJeště tu funguje směna za pico jestli se nemýlím.", cíga, false);
+        Kuchar kuchar = new Kuchar("Kuchař", hřeben, "Ztratil jsem svůj oblíbenej hřeben, asi mi ho někdo šlohnul!\nNeviděl si ho někde?", "Super!!! Netušil jsem že ho najdeš, něco pro tebe mám.\nSnad ho neukradl ten Snejks pitomej\nNa, tady máš...", cíga, false);
         Bruno bruno = new Bruno("Bruno", knížky, "Hrozně rád bych si něco přečetl ale nic tu nemám a knihovna je zavřená!", "Výborně, to jsem potřeboval, díky!!\nMám i něco pro tebe", šroubovák, false);
 
         // vytvářejí se jednotlivé prostory s popisem
-        Prostor cela = new Prostor("cela","ve smutné studené vězeňské cele s malým výhledem na svobodu.", null);
-        Prostor cela2 = new Prostor("cela","ve smutné studené vězeňské cele s malým výhledem na svobodu.", bruno);
+        Prostor cela = new Prostor("cela211","ve své smutné studené vězeňské cele číslo 211 s malým výhledem na svobodu.", null);
+        Prostor cela2 = new Prostor("cela212","ve smutné studené vězeňské cele číslo 212 s malým výhledem na svobodu.", bruno);
         Prostor chodby = new Prostor("chodby", "v dlouhé chodbě plné cel, které vedou do ostatních částí vězení.", snejks);
         Prostor kuchyně = new Prostor("kuchyně","ve staré vězeňské kuchyni, ještě je tu cítit zápach z obědu.", kuchar);
         Prostor dílna = new Prostor("dílna","v zamčené dílně, zbylo tu po stěhování nějaké nářadí.",null, true);
@@ -72,6 +72,7 @@ public class HerniPlan {
 
         // zasazení prostorů do seznamu
         seznamProstoru.add(cela);
+        seznamProstoru.add(cela2);
         seznamProstoru.add(chodby);
         seznamProstoru.add(kuchyně);
         seznamProstoru.add(dílna);
@@ -79,8 +80,7 @@ public class HerniPlan {
         seznamProstoru.add(hřiště);
         seznamProstoru.add(ventilace);
         seznamProstoru.add(knihovna);
-        seznamProstoru.add(cela2);
-        
+
         // přiřazují se průchody mezi prostory (sousedící prostory)
         cela.setVychod(chodby);
         cela2.setVychod(chodby);
@@ -114,9 +114,6 @@ public class HerniPlan {
         dílna.pridejPredmet(pilka);
         dílna.pridejPredmet(dřevo);
         dílna.pridejPredmet(stoly);
-
-        chodby.pridejPredmet(pilka);
-        chodby.pridejPredmet(pivko);
 
         aktualniProstor = cela;  // hra začíná v cele
     }

@@ -54,7 +54,7 @@ class PrikazJdi implements IPrikaz {
             Prostor kontrola = plan.getAktualniProstor();
             Inventar inventar = plan.getInventar();
             // výměna předmětů
-            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("cela") && kontrola.containsPredmetPodleJmena("cíga")) {
+            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("cela211") && kontrola.containsPredmetPodleJmena("cíga")) {
                 kontrola.removePredmetPodleJmena("cíga");
                 kontrola.pridejPredmet(new Predmet("pivko", true));
                 System.out.println("Někdo se rychle mihl do a z tvé cely když si odcházel!");
@@ -68,11 +68,16 @@ class PrikazJdi implements IPrikaz {
                 unlockedVent = true;
                 return sousedniProstor.dlouhyPopis() + "\nPodařilo se ti otevřít průchod do ventilace.";
             }
-            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("cela") && inventar.getPredmetPodleJmena("pilka_na_železo")) {
+            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("cela211") && inventar.getPredmetPodleJmena("pilka_na_železo")) {
                 hra.setKonecHry(true);
                 return "";
             }
-            return sousedniProstor.dlouhyPopis();
+            if (plan.getAktualniProstor() == plan.getProstorPodleJmena("hřiště") && inventar.getPredmetPodleJmena("pilka_na_železo")) {
+                hra.setVitezstvi(true);
+                hra.setKonecHry(true);
+                return "Bachař:\nTak to ne! Kde si vzal tu pilku?!?! STŮJ!!!!\n\nKonec hry. Načapal tě bachař!!!";
+            }
+            return (sousedniProstor.dlouhyPopis() + "\n" + sousedniProstor.popisPostav());
         }
     }
     

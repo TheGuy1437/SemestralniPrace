@@ -36,7 +36,7 @@ public class PrikazMluv implements IPrikaz{
             return "";
         }
         for (Predmet predmet : obsah ) {
-            if ( predmet == postava.getPredmetCoChce()) {
+            if ( predmet.getNazev() == postava.getPredmetCoChce().getNazev()) {
                 inventar.odeberPredmet(predmet);
                 inventar.pridejPredmet(postava.getPredmetCoDa());
                 postava.rekniHlaskuPoVeci();
